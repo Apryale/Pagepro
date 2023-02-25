@@ -1,0 +1,97 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ .parent {
+  position: relative;
+}
+label,input {
+  position: absolute;
+  
+  top: 20px;
+  left: 20px;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+
+label {
+  position: relative;
+  width: 480px;
+  height: 180px;
+  display: block;
+  background: url(media/image/matin.avif);
+  background-size: cover;
+  background-position: center;
+  border: 10px solid rgba(red, rgb(80, 187, 80), blue, 1);
+  /*la ligne du dessus permet de ne pas mettre de contoure sur l'image de fond*/
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 1s ease;
+  box-shadow: 0 0 25px rgba(20, 20, 20, 0.4);
+  background-color: rgba(27, 107, 141, 0.1);
+  
+}
+
+label::after {
+  content: '';
+  position: absolute;
+  height: 110px;
+  width: 110px;
+  border: 10px solid rgba(32, 34, 34, 0.3);
+  /*la couleur au dessus correspond au contoure du bouton dans les 2 modes*/
+  border-radius: 50%;
+  top: 25px;
+  left: 30px;
+  transition: 0.8s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
+  background-color: #f59163;
+  /* la couleur au dessus corespond à la couleur du bouton en mode jour*/
+}
+
+
+.background {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100vh;
+  background: rgba(118, 204, 230, 0.603);
+  z-index: -1;
+  transition: all 1.1s ease;
+  /*délais de transition du background de la page */
+ 
+}
+
+ input:checked ~ label::after {
+    /*bouton mode sombre*/
+  left: 430px;
+  transform: translateX(-100%);
+  background: hsl(197, 83%, 9%);
+
+ }
+
+  input:checked ~ label {
+    background: url(media/image/nuit.avif);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px solid rgba(31, 12, 12, 0.2);
+
+  }
+
+  input:checked + .background {
+    background: hsl(194, 100%, 9%);
+  }
+  input {
+    display: none;
+  }
